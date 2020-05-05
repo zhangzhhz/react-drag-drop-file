@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { parse } from 'papaparse';
 
 function App() {
+  const [contacts, setContacts] = React.useState(() => ({email: "fake@gmail.com", name: "Fake"}));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="text-center text-4x1">Contact Import</h1>
+      <div
+        classname={`p-6 my-2 mx-auto max-w-md border-2`}
+        onDragEnter={() => {}}
+        onDragLeave={() => {}}
+        onDragOver={() => {}}
+        onDrop={() => {}}
+      >
+        DROP HERE
+      </div>
+      <ul>
+        {contacts.map(contact => {
+          return (
+            <li key={contact.email}>
+              <strong>{contact.name}</strong>: {contact.email}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
